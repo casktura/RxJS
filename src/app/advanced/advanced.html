@@ -1,0 +1,15 @@
+<div class="action-container">
+  <div>
+    <p-button label="Merge Map" (onClick)="mergeMapTrigger.next()"></p-button>
+    Next wait time: {{ this.times[this.mergeMapIndex] }}
+  </div>
+  <div>
+    <p-button label="Concat Map" (onClick)="concatMapTrigger.next()"></p-button>
+    Next wait time: {{ this.times[this.concatMapIndex] }}
+  </div>
+  <div>
+    <p-button label="Switch Map" (onClick)="switchMapTrigger.next()"></p-button>
+    Next wait time: {{ this.times[this.switchMapIndex] }}
+  </div>
+</div>
+<app-log-viewer [(logs)]="logs"></app-log-viewer>

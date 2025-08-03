@@ -1,0 +1,109 @@
+<p-table
+  [value]="(customers$ | async)?.result ?? []"
+  [tableStyle]="{ width: '100%' }"
+  [scrollable]="true"
+  scrollHeight="800px"
+  [virtualScroll]="true"
+  [virtualScrollItemSize]="41"
+>
+  <ng-template #header>
+    <tr>
+      <th>CustomerID</th>
+      <th>FirstName</th>
+      <th>LastName</th>
+      <th>FullName</th>
+      <th>Gender</th>
+      <th>DateOfBirth</th>
+      <th>Email</th>
+      <th>PhoneNumber</th>
+      <th>SecondaryPhoneNumber</th>
+      <th>AddressLine1</th>
+      <th>AddressLine2</th>
+      <th>City</th>
+      <th>State</th>
+      <th>PostalCode</th>
+      <th>Country</th>
+      <th>TimeZone</th>
+      <th>AccountManagerID</th>
+      <th>LeadSource</th>
+      <th>CustomerType</th>
+      <th>Industry</th>
+      <th>CompanyName</th>
+      <th>AnnualRevenue</th>
+      <th>NumberOfEmployees</th>
+      <th>LastPurchaseDate</th>
+      <th>TotalPurchaseValue</th>
+      <th>IsSubscribedToNewsletter</th>
+      <th>PreferredContactMethod</th>
+      <th>LastContactedDate</th>
+      <th>ContactFrequency</th>
+      <th>Notes</th>
+      <th>OptInStatus</th>
+      <th>LastInteractionType</th>
+      <th>InteractionScore</th>
+      <th>SupportTicketCount</th>
+      <th>HasOpenTicket</th>
+      <th>SatisfactionScore</th>
+      <th>CampaignID</th>
+      <th>CampaignName</th>
+      <th>CampaignStartDate</th>
+      <th>CampaignEndDate</th>
+      <th>CampaignChannel</th>
+      <th>CampaignResponse</th>
+      <th>ConversionDate</th>
+      <th>PromoCodeUsed</th>
+      <th>LeadScore</th>
+      <th>CRMCreatedDate</th>
+    </tr>
+  </ng-template>
+  <ng-template #body let-customer>
+    <tr>
+      <td>{{ customer.CustomerID }}</td>
+      <td>{{ customer.FirstName }}</td>
+      <td>{{ customer.LastName }}</td>
+      <td>{{ customer.FullName }}</td>
+      <td>{{ customer.Gender }}</td>
+      <td>{{ customer.DateOfBirth }}</td>
+      <td>{{ customer.Email }}</td>
+      <td>{{ customer.PhoneNumber }}</td>
+      <td>{{ customer.SecondaryPhoneNumber }}</td>
+      <td>{{ customer.AddressLine1 }}</td>
+      <td>{{ customer.AddressLine2 }}</td>
+      <td>{{ customer.City }}</td>
+      <td>{{ customer.State }}</td>
+      <td>{{ customer.PostalCode }}</td>
+      <td>{{ customer.Country }}</td>
+      <td>{{ customer.TimeZone }}</td>
+      <td>{{ customer.AccountManagerID }}</td>
+      <td>{{ customer.LeadSource }}</td>
+      <td>{{ customer.CustomerType }}</td>
+      <td>{{ customer.Industry }}</td>
+      <td>{{ customer.CompanyName }}</td>
+      <td>{{ customer.AnnualRevenue }}</td>
+      <td>{{ customer.NumberOfEmployees }}</td>
+      <td>{{ customer.LastPurchaseDate }}</td>
+      <td>{{ customer.TotalPurchaseValue }}</td>
+      <td>{{ customer.IsSubscribedToNewsletter }}</td>
+      <td>{{ customer.PreferredContactMethod }}</td>
+      <td>{{ customer.LastContactedDate }}</td>
+      <td>{{ customer.ContactFrequency }}</td>
+      <td>{{ customer.Notes }}</td>
+      <td>{{ customer.OptInStatus }}</td>
+      <td>{{ customer.LastInteractionType }}</td>
+      <td>{{ customer.InteractionScore }}</td>
+      <td>{{ customer.SupportTicketCount }}</td>
+      <td>{{ customer.HasOpenTicket }}</td>
+      <td>{{ customer.SatisfactionScore }}</td>
+      <td>{{ customer.CampaignID }}</td>
+      <td>{{ customer.CampaignName }}</td>
+      <td>{{ customer.CampaignStartDate }}</td>
+      <td>{{ customer.CampaignEndDate }}</td>
+      <td>{{ customer.CampaignChannel }}</td>
+      <td>{{ customer.CampaignResponse }}</td>
+      <td>{{ customer.ConversionDate }}</td>
+      <td>{{ customer.PromoCodeUsed }}</td>
+      <td>{{ customer.LeadScore }}</td>
+      <td>{{ customer.CRMCreatedDate }}</td>
+    </tr>
+  </ng-template>
+</p-table>

@@ -1,0 +1,19 @@
+# Use root/example as user/password credentials
+
+services:
+  db:
+    image: mariadb:latest
+    restart: unless-stopped
+    ports:
+      - 3306:3306
+    environment:
+      MARIADB_DATABASE: RxJS
+      MARIADB_ROOT_PASSWORD: P@ssw0rd
+      MARIADB_USER: user
+      MARIADB_PASSWORD: P@ssw0rd
+
+  adminer:
+    image: adminer:latest
+    restart: unless-stopped
+    ports:
+      - 8090:8080

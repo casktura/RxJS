@@ -7,22 +7,12 @@ import {
 import express from 'express';
 import { join } from 'node:path';
 
+var compression = require('compression');
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
 const app = express();
+app.use(compression());
 const angularApp = new AngularNodeAppEngine();
-
-/**
- * Example Express Rest API endpoints can be defined here.
- * Uncomment and define endpoints as necessary.
- *
- * Example:
- * ```ts
- * app.get('/api/{*splat}', (req, res) => {
- *   // Handle API request
- * });
- * ```
- */
 
 /**
  * Serve static files from /browser
@@ -34,6 +24,10 @@ app.use(
     redirect: false,
   }),
 );
+
+// APIs.
+var apis = require('./app/api');
+app.use('/api', apis);
 
 /**
  * Handle all other requests by rendering the Angular application.

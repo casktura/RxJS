@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  gap: 1em;
+
+  & > * {
+    flex-grow: 1;
+  }
+}
+
+.action-container {
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+}
