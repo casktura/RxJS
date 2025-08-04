@@ -16,7 +16,7 @@ const knex = require('knex')({
 });
 
 router.get('/customers/:length', async function (req: Request, res: Response) {
-  // await sleep(5000);
+  await sleep(3000);
 
   let length = Number(req.params['length']);
 

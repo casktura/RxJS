@@ -4,7 +4,14 @@ import { ButtonModule } from 'primeng/button';
 import { ApiService } from '../api-service';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { filter, map } from 'rxjs';
+import {
+  combineLatestWith,
+  debounceTime,
+  distinctUntilChanged,
+  filter,
+  map,
+  startWith,
+} from 'rxjs';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -23,6 +30,7 @@ export class SimpleComponent implements OnInit {
   api = inject(ApiService);
   fb = inject(FormBuilder);
   logs: string[] = [];
+
   controlA = new FormControl<string>('');
   controlB = new FormControl<string>('');
   randomApiResponse = this.api.getRandom();
@@ -31,17 +39,38 @@ export class SimpleComponent implements OnInit {
     filter((value) => !!value && !isNaN(Number(value))),
     map((value) => Number(value) + 10),
   );
-  resultB$ = this.resultA$.pipe(map((valueA) => valueA / 2));
+  resultB$ = this.resultA$.pipe(
+    combineLatestWith(
+      this.controlB.valueChanges.pipe(
+        startWith(0),
+        filter((value) => !!value && !isNaN(Number(value))),
+        map((value) => Number(value)),
+      ),
+    ),
+    map(([valueA, inputB]) => valueA / 2 + inputB),
+  );
 
   ngOnInit(): void {
-    this.controlA.valueChanges.subscribe((value) => {
-      this.logs.push(`New value: ${value}`);
-    });
+    this.controlA.valueChanges
+      .pipe(
+        debounceTime(500),
+        filter((value) => value !== 'A'),
+      )
+      .subscribe((value) => {
+        this.display(`New value: ${value}`);
+      });
+    this.playground();
   }
 
   showApiResult() {
     this.randomApiResponse.subscribe((response) => {
-      this.logs.push(`API result: ${response.result}`);
+      this.display(`API result: ${response.result}`);
     });
   }
+
+  display(message: string) {
+    this.logs.push(message);
+  }
+
+  playground() {}
 }

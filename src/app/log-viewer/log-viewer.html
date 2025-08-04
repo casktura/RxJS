@@ -1,8 +1,5 @@
 <p-button label="Clear" icon="pi pi-trash" (onClick)="clear()" />
-<p-table
-  [value]="logs()"
-  [tableStyle]="{ 'min-width': '50rem', width: 'fit-content' }"
->
+<p-table [value]="logs()" [tableStyle]="{ width: '100%' }">
   <ng-template #header>
     <tr>
       <th>Logs</th>

@@ -2,7 +2,14 @@ import { Component, inject, OnInit } from '@angular/core';
 import { LogViewerComponent } from '../log-viewer/log-viewer';
 import { ButtonModule } from 'primeng/button';
 import { ApiService } from '../api-service';
-import { concatMap, map, mergeMap, Subject, switchMap } from 'rxjs';
+import {
+  concatMap,
+  debounceTime,
+  map,
+  mergeMap,
+  Subject,
+  switchMap,
+} from 'rxjs';
 
 @Component({
   selector: 'app-advanced',

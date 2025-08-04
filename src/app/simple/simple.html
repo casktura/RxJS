@@ -1,7 +1,8 @@
 <div class="action-container">
   <input type="text" pInputText [formControl]="controlA" />
+  <input type="text" pInputText [formControl]="controlB" />
   <div>A (Input + 10): {{ resultA$ | async }}</div>
-  <div>B (A / 2): {{ resultB$ | async }}</div>
+  <div>B (A / 2) + 2nd Input: {{ resultB$ | async }}</div>
   <p-button label="Show API Result" (onClick)="showApiResult()"></p-button>
 </div>
 <app-log-viewer [(logs)]="logs"></app-log-viewer>
