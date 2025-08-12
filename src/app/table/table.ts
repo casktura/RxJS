@@ -11,5 +11,5 @@ import { CommonModule } from '@angular/common';
 })
 export class TableComponent {
   api = inject(ApiService);
-  customers$ = this.api.getCustomer();
+  customers$ = this.api.getCustomer(10000);
 }

@@ -16,7 +16,7 @@ const knex = require('knex')({
 });
 
 router.get('/customers/:length', async function (req: Request, res: Response) {
-  await sleep(3000);
+  // await sleep(3000);
 
   let length = Number(req.params['length']);
 
@@ -24,7 +24,17 @@ router.get('/customers/:length', async function (req: Request, res: Response) {
     length = 10000;
   }
 
-  const customers = await knex.select().from('Customers').limit(length);
+  let customers: any[] = await knex.select().from('Customers').limit(length);
+
+  // Filter out null values.
+  customers = customers.map((customer) =>
+    Object.fromEntries(
+      Object.entries(customer).filter(
+        ([key, value]) => value !== null && value !== undefined,
+      ),
+    ),
+  );
+
   res.json({ result: customers });
 });
 
